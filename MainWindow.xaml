@@ -1,35 +1,49 @@
-﻿<Window x:Class="WpfApp1.MainWindow"
+<Window x:Class="WpfApp1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListView Height="202" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,38,58,0" VerticalAlignment="Top" Grid.Row="1">
+        <ListView Height="202" x:Name="mainList" Margin="58,38,58,0" VerticalAlignment="Top" Grid.Row="1" SelectionMode="Extended">
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    <Setter Property="Padding" Value="5,0,0,0"/>
+                    <Setter Property="Margin" Value="0,0,0,0"/>
+                </Style>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    <Setter Property="Padding" Value="5,0,0,0"/>
+                </Style>
+            </ListView.Resources>
             <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="PESEL"/>
-                    <GridViewColumn Header="Imię"/>
-                    <GridViewColumn Header="Drugie imię"/>
-                    <GridViewColumn Header="Nazwisko"/>
-                    <GridViewColumn Header="Data urodzenia"/>
-                    <GridViewColumn Header="Numer telefonu"/>
-                    <GridViewColumn Header="Adres zamieszkania"/>
-                    <GridViewColumn Header="Miejscowość"/>
-                    <GridViewColumn Header="Kod pocztowy"/>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="PESEL" DisplayMemberBinding="{Binding m_strPESEL}" Width="150"/>
+                    <GridViewColumn Header="Imię" DisplayMemberBinding="{Binding m_strName}" Width="150"/>
+                    <GridViewColumn Header="Drugie imię" DisplayMemberBinding="{Binding m_strSecName}" Width="150"/>
+                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding m_strSurname}" Width="150"/>
+                    <GridViewColumn Header="Data urodzenia" DisplayMemberBinding="{Binding m_strDateOfBirth}" Width="150"/>
+                    <GridViewColumn Header="Numer telefonu" DisplayMemberBinding="{Binding m_strPhoneNumber}" Width="150"/>
+                    <GridViewColumn Header="Adres zamieszkania" DisplayMemberBinding="{Binding m_strAddres}" Width="150"/>
+                    <GridViewColumn Header="Miejscowość" DisplayMemberBinding="{Binding m_strCity}" Width="150"/>
+                    <GridViewColumn Header="Kod pocztowy" DisplayMemberBinding="{Binding m_strPostalCode}" Width="150"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <Menu Grid.RowSpan="2" VerticalAlignment="Top">
             <MenuItem Header="Plik">
+                <MenuItem Header="New" IsEnabled="False"/>
                 <MenuItem Header="Wczytaj"></MenuItem>
                 <MenuItem Header="Zapisz"></MenuItem>
+                <Separator/>
+                <MenuItem Header="Exit"/>
             </MenuItem>
             <MenuItem Header="Edycja">
                 <MenuItem Header="Dodaj użytkownika"></MenuItem>
