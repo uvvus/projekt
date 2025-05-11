@@ -40,14 +40,14 @@
         <Menu Grid.RowSpan="2" VerticalAlignment="Top">
             <MenuItem Header="Plik">
                 <MenuItem Header="New" IsEnabled="False"/>
-                <MenuItem Header="Wczytaj"></MenuItem>
-                <MenuItem Header="Zapisz"></MenuItem>
+                <MenuItem Header="Wczytaj" Click="MenuItem_Load_Click"></MenuItem>
+                <MenuItem Header="Zapisz" Click="MenuItem_Save_Click"></MenuItem>
                 <Separator/>
-                <MenuItem Header="Exit"/>
+                <MenuItem Header="Exit" Click="MenuItem_Exit_Click"/>
             </MenuItem>
             <MenuItem Header="Edycja">
-                <MenuItem Header="Dodaj użytkownika"></MenuItem>
-                <MenuItem Header="Usuń zaznaczonych uczniów"></MenuItem>
+                <MenuItem Header="Dodaj użytkownika" Click="MenuItem_AddUser_Click"></MenuItem>
+                <MenuItem Header="Usuń zaznaczonych uczniów" Click="MenuItem_RemoveSelected_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="O programie"></MenuItem>
         </Menu>
